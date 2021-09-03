@@ -14,7 +14,12 @@ export abstract class Model {
     args: Array<any> = [],
     sender: Account = this.deployer
   ) {
-    return this.chain.callReadOnlyFn(this.name, method, args, sender.address);
+    return this.chain.callReadOnlyFn(
+      this.address,
+      method,
+      args,
+      sender.address
+    );
   }
 
   callPublic(
@@ -22,7 +27,7 @@ export abstract class Model {
     args: Array<any> = [],
     sender: Account = this.deployer
   ) {
-    return Tx.contractCall(this.name, method, args, sender.address);
+    return Tx.contractCall(this.address, method, args, sender.address);
   }
 }
 
