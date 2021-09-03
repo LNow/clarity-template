@@ -1,0 +1,7 @@
+settings/Mainnet.toml
+settings/Testnet.toml
+history.txt
+workspace.code-workspace
+coverage
+coverage.lcov
+createcov
