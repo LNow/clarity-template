@@ -2,11 +2,20 @@ import { Account, Chain, Tx } from "../deps.ts";
 
 export abstract class Model {
   abstract readonly name: string;
+  private contractName: string | undefined;
 
-  constructor(readonly chain: Chain, readonly deployer: Account) {}
+  constructor(
+    readonly chain: Chain,
+    readonly deployer: Account,
+    contractName?: string | undefined
+  ) {
+    this.contractName = contractName;
+  }
 
   get address(): string {
-    return `${this.deployer.address}.${this.name}`;
+    return `${this.deployer.address}.${
+      typeof this.contractName === "string" ? this.contractName : this.name
+    }`;
   }
 
   callReadOnly(
@@ -39,7 +48,16 @@ export abstract class Model {
 export class Models {
   constructor(readonly chain: Chain, readonly deployer: Account) {}
 
-  get<T extends Model>(type: { new (chain: Chain, deployer: Account): T }): T {
-    return new type(this.chain, this.deployer);
+  get<T extends Model>(
+    type: {
+      new (
+        chain: Chain,
+        deployer: Account,
+        contractName?: string | undefined
+      ): T;
+    },
+    contractName?: string | undefined
+  ): T {
+    return new type(this.chain, this.deployer, contractName);
   }
 }
