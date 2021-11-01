@@ -2,20 +2,22 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "npm",
-      "script": "clarinet:test",
-      "problemMatcher": [],
-      "label": "npm: clarinet:test",
-      "detail": "npm run clarinet:prepare && clarinet test",
-      "group": {
-        "kind": "test",
-        "isDefault": true
-      }
+      "label": "check contract",
+      "group": "test",
+      "type": "shell",
+      "command": "clarinet check"
     },
     {
-      "type": "npm",
-      "script": "test:auth",
-      "group": "test"
+      "label": "test contract",
+      "group": "test",
+      "type": "shell",
+      "command": "clarinet test"
+    },
+    {
+      "label": "run current test file",
+      "group": "test",
+      "type": "shell",
+      "command": "clarinet test ${file}"
     }
   ]
 }
