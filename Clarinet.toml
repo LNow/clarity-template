@@ -14,5 +14,5 @@ path = "contracts/external/sip-010-trait-ft-standard.clar"
 depends_on = []
 
 [contracts.sip-009-trait-ft-standard]
-path = "contracts/external/sip-010-trait-ft-standard.clar"
+path = "contracts/external/sip-009-nft-trait-standard.clar"
 depends_on = []
