@@ -7,6 +7,9 @@ costs_version = 1
 path = "contracts/base.clar"
 depends_on = []
 
+[contracts.token]
+path = "contracts/token.clar"
+depends_on = ["sip-010-trait-ft-standard"]
 
 # EXTERNAL CONTRACTS
 [contracts.sip-010-trait-ft-standard]
