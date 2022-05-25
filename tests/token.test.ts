@@ -1,14 +1,15 @@
 import {
+  afterEach,
   assertEquals,
   beforeEach,
   Chain,
+  Context,
   describe,
   it,
   run,
   types,
 } from "../deps.ts";
 import { TokenModel } from "../models/token.model.ts";
-import { Context } from "../src/context.ts";
 
 let ctx: Context;
 let chain: Chain;
@@ -18,6 +19,10 @@ beforeEach(() => {
   ctx = new Context();
   chain = ctx.chain;
   token = ctx.models.get(TokenModel);
+});
+
+afterEach(() => {
+  ctx.terminate();
 });
 
 describe("[TOKEN]", () => {

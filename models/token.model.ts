@@ -1,5 +1,4 @@
-import { Account, types } from "../deps.ts";
-import { Model } from "../src/model.ts";
+import { Account, Model, types } from "../deps.ts";
 
 enum Err {
   ERR_NOT_AUTHORIZED = 1001,
