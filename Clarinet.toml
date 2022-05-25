@@ -1,21 +1,32 @@
 [project]
 name = "clarity-template"
-requirements = []
-costs_version = 1
+authors = ["LNow"]
+telemetry = false
+boot_contracts = ["pox", "costs-v2", "bns"]
+
+[repl]
+costs_version = 2
+parser_version = 2
+
+[repl.analysis]
+passes = ["check_checker"]
+
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
+
 
 [contracts.base]
 path = "contracts/base.clar"
-depends_on = []
 
 [contracts.token]
 path = "contracts/token.clar"
-depends_on = ["sip-010-trait-ft-standard"]
 
 # EXTERNAL CONTRACTS
 [contracts.sip-010-trait-ft-standard]
 path = "contracts/external/sip-010-trait-ft-standard.clar"
-depends_on = []
 
 [contracts.sip-009-trait-ft-standard]
 path = "contracts/external/sip-009-nft-trait-standard.clar"
-depends_on = []
